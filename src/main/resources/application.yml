@@ -1,3 +1,8 @@
 spring:
   application:
     name: banco-javer
+  cloud:
+    openfeign:
+      httpclient:
+        hc5:
+          enabled: true
