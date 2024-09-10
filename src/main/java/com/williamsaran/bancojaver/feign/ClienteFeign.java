@@ -5,10 +5,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "cliente", url = "http://localhost:8000/clientes/")
+@FeignClient(name = "cliente", url = "http://localhost:8000/clientes")
 public interface ClienteFeign {
     @GetMapping(
-            value = "{id}",
+            value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     ClienteDTO encontrarClientePorId(@PathVariable Long id);
 
@@ -20,10 +20,10 @@ public interface ClienteFeign {
             produces = MediaType.APPLICATION_JSON_VALUE)
     ClienteDTO atualizarConta(@RequestBody ClienteDTO dto);
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     void deletarPorId(@PathVariable Long id);
 
-    @PatchMapping(value = "desativar/{id}",
+    @PatchMapping(value = "/desativar/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     ClienteDTO desativarConta(@PathVariable Long id);
 }

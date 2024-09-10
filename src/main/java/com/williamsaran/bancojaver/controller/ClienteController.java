@@ -8,12 +8,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/clientes/")
+@RequestMapping("/clientes")
 public class ClienteController {
     @Autowired
     private ClienteFeign clienteFeign;
 
-    @GetMapping(value = "{id}",
+    @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ClienteDTO encontrarClientePorId(@PathVariable Long id) {
         return clienteFeign.encontrarClientePorId(id);
@@ -32,13 +32,13 @@ public class ClienteController {
         return clienteFeign.atualizarConta(dto);
     }
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarPorId(@PathVariable Long id) {
         clienteFeign.deletarPorId(id);
     }
 
-    @PatchMapping(value = "desativar/{id}",
+    @PatchMapping(value = "/desativar/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ClienteDTO desativarConta(@PathVariable Long id) {
         return clienteFeign.desativarConta(id);
