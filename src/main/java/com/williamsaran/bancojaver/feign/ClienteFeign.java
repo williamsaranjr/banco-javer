@@ -23,7 +23,7 @@ public interface ClienteFeign {
     @DeleteMapping(value = "{id}")
     void deletarPorId(@PathVariable Long id);
 
-    @PutMapping(value = "desativar/{id}",
+    @PatchMapping(value = "desativar/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     ClienteDTO desativarConta(@PathVariable Long id);
 }

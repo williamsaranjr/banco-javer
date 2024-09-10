@@ -15,8 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.awt.*;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -84,7 +82,7 @@ public class ClienteControllerTest {
         Mockito.when(feign.desativarConta(ArgumentMatchers.anyLong()))
                 .thenReturn(cliente);
 
-        mock.perform(put("/clientes/desativar/1"))
+        mock.perform(patch("/clientes/desativar/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.correntista").value(false));
     }

@@ -38,7 +38,7 @@ public class ClienteController {
         clienteFeign.deletarPorId(id);
     }
 
-    @PutMapping(value = "desativar/{id}",
+    @PatchMapping(value = "desativar/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ClienteDTO desativarConta(@PathVariable Long id) {
         return clienteFeign.desativarConta(id);
