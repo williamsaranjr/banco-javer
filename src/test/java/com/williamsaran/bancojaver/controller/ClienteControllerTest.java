@@ -46,7 +46,7 @@ public class ClienteControllerTest {
         Mockito.when(feign.criarConta(ArgumentMatchers.any()))
                 .thenReturn(cliente);
 
-        mock.perform(post("/clientes/")
+        mock.perform(post("/clientes")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(gson.toJson(cliente)))
                 .andExpect(status().isCreated())
@@ -59,7 +59,7 @@ public class ClienteControllerTest {
         Mockito.when(feign.atualizarConta(ArgumentMatchers.any()))
                 .thenReturn(ClienteUtils.criarDTOMock());
 
-        mock.perform(patch("/clientes/")
+        mock.perform(patch("/clientes")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(gson.toJson(ClienteUtils.criarDTOMock())))
                 .andExpect(status().isOk());
